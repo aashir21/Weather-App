@@ -1,0 +1,46 @@
+@import "./mixins";
+@import "./resets";
+@import "./variables";
+
+.banner {
+  width: 75%;
+  margin: auto;
+  height: 75vh;
+}
+
+.banner-container {
+  width: 100%;
+  height: 75%;
+  @include flex(center, center);
+}
+
+.banner-greeting {
+  width: 100%;
+
+  h2 {
+    color: $accent-color;
+    font-family: "Archivo", sans-serif;
+    margin: 3rem 0;
+  }
+}
+
+.banner-text {
+  @include flex(center, center);
+  flex-direction: column;
+  text-align: center;
+  width: 50%;
+  height: 100%;
+  h1 {
+    color: $primary-color;
+    font-family: "Archivo", sans-serif;
+    font-weight: map-get($font-weights, heavy);
+    font-size: 3rem;
+  }
+  p {
+    color: $secondary-color;
+    font-family: "Archivo", sans-serif;
+    font-weight: map-get($font-weights, medium);
+    font-size: 1.25rem;
+    margin: 1rem;
+  }
+}

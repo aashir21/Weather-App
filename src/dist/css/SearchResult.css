@@ -1,0 +1,138 @@
+*,
+*::after,
+*::before {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.weather-info-banner {
+  width: 75%;
+  min-height: 75vh;
+  margin: auto;
+}
+
+.title {
+  text-align: center;
+  font-size: 4rem;
+  text-transform: uppercase;
+  color: #36454f;
+  font-family: "Archivo", sans-serif;
+  margin: 3rem 0;
+}
+
+.weather-info-container {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 10px;
+}
+
+.card {
+  width: 250px;
+  height: 175px;
+  margin: 1rem 0.5rem;
+  border-left: 2px solid #03ac13;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+          box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+
+.card h3 {
+  font-family: "Archivo", sans-serif;
+  color: #36454f;
+  width: 90%;
+  margin: 1rem auto;
+  text-align: center;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+}
+
+.card h1 {
+  color: #03ac13;
+  font-size: 4.5rem;
+  width: 90%;
+  margin: auto;
+  text-align: center;
+}
+
+.forecast {
+  margin: 5rem auto;
+  min-height: 75vh;
+  width: 75%;
+}
+
+.forecast-container {
+  width: 100%;
+  height: 100%;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.forecast-card {
+  width: 275px;
+  height: 275px;
+  margin: 1rem 0.5rem;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+          box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  border-left: 2px solid #03ac13;
+  font-family: "Archivo", sans-serif;
+}
+
+.day-name {
+  color: #36454f;
+  font-family: "Archivo", sans-serif;
+  text-align: center;
+}
+
+.forecast-text {
+  width: 90%;
+  margin: auto;
+  height: auto;
+  text-align: center;
+}
+
+.forecast-text .f-main {
+  color: #03ac13;
+  margin: 1rem;
+  font-size: 1.75rem;
+}
+
+.forecast-text h3 {
+  font-size: 1.25rem;
+  color: #36454f;
+  text-transform: capitalize;
+}
+
+.forecast-text .f-temp {
+  font-size: 5rem;
+  color: #03ac13;
+  margin: 1rem;
+}
+
+.forecast-text h4 {
+  font-size: 1.25rem;
+  font-family: "Archivo", sans-serif;
+  color: #36454f;
+}
+/*# sourceMappingURL=SearchResult.css.map */

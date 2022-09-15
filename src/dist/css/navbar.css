@@ -1,0 +1,46 @@
+*,
+*::after,
+*::before {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Archivo", sans-serif;
+}
+
+.navbar {
+  width: 75%;
+  margin: 2rem auto;
+}
+
+.label {
+  text-decoration: none;
+}
+
+.nav-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.nav-content h3 {
+  color: #36454f;
+  margin: 0 1rem;
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+.nav-content img {
+  height: 50px;
+  width: 50px;
+}
+/*# sourceMappingURL=navbar.css.map */
