@@ -1,46 +1,50 @@
-import React from 'react'
+import React, {useState} from 'react'
 import '../dist/css/Home.css'
 import SearchForm from './SearchForm';
+import SearchResult from './SearchResult';
 
 
 function Home() {
 
-  const hours = new Date().getHours();
-  const banner = document.getElementById('banner') 
+  const [flag,setFlag] = useState(0)
+  var longitude=0,latitude=0;
 
+  const successfulCallback = (position) =>{
+
+    setFlag(1);
+    
+    latitude = position.coords.latitude;
+    longitude = position.coords.longitude;
   
+  }
 
-  let title = " ";
+  const error = (error) =>{
+    setFlag(0);
+  }
 
-  if(hours >= 5 && hours <= 12){
-    title = "Good Morning"
-  }
-  else if(hours >= 13 && hours <= 16 ){
-    title = "Good Afternoon"
-  }
-  else if(hours>= 17 && hours <= 19){
-    title = "Good Evening"
-  }
-  else{
-    title = "Hello There"
-  }
-  
+  navigator.geolocation.getCurrentPosition(successfulCallback,error);
+
 
   return (
-    <div className='banner' id='banner'>
-          <div className='banner-greeting'>
-            <h2>{title},</h2>
-          </div>
-        <div className='banner-container'>
-          
-          <div className='banner-text'>
-            <h1>SEARCH A CITY</h1>
-            <p>Search Your City And Know The Weather And Forecast.</p>
-            <SearchForm></SearchForm>
-            
-          </div>
-        </div>
-    </div>
+    
+    <React.Fragment>
+      {
+        flag ? <SearchResult lat={toString(latitude)} lon={toString(longitude)}></SearchResult> : (
+          (
+            <div className='hero'>
+                <div className='hero-container'>
+                    <div className='hero-text'>
+                        <h1>Find out what it's like outside.</h1>
+                        <p>Check the weather real quick before you pop out. Know if it's raining or the sun's out shining.
+                          Fancy a trip later? Check the forecast before you plan.
+                        </p>
+                    </div>
+                </div>
+            </div>
+          )
+        )
+      }
+    </React.Fragment>    
 
   )
 }

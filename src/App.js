@@ -10,8 +10,8 @@ function App() {
       <NavBar/>
       <Routes>
         <Route exact path='/' element={<Home></Home>}></Route>
-        <Route exact path='/searchresult/:cityName' element={<SearchResult/>}></Route>
-        <Route exact path='/noresult/:city' element={<NoResult></NoResult>}></Route>
+        <Route exact path='/searchresult' element={<SearchResult/>}></Route>
+        <Route exact path='/noresult' element={<NoResult></NoResult>}></Route>
       </Routes>
     </>
   );

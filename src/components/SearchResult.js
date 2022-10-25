@@ -1,109 +1,83 @@
 import { useParams, useNavigate } from 'react-router-dom'
-import React, {useState,useEffect} from 'react'
+import React, {useEffect,useReducer} from 'react'
 import '../dist/css/SearchResult.css'
+import { ACTION, INITIAL_STATE, reducer } from '../reducer';
 
 
 
-function SearchResult() {
+function SearchResult(props) {
 
-    const navigation = useNavigate();
-    const {cityName} = useParams();
-    const [temps,setTemps] = useState([]);
-    const [forecast,setForecast] = useState([]);
+    const [state, dispatch] = useReducer(reducer,INITIAL_STATE)
 
-    
+    //lat=52.399448 lon=0.259790, api=ffe7d342f6d3e17670cfd95c181ccac5
+
     useEffect(()=>{
-        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=ffe7d342f6d3e17670cfd95c181ccac5`)
+
+        fetch(`https://api.openweathermap.org/data/2.5/weather?lat=52.399448&lon=0.259790&appid=ffe7d342f6d3e17670cfd95c181ccac5`)
         .then(res=>res.json())
         .then((data) => {
-            setTemps(data.main);
+            console.log(data);
+            dispatch({type:ACTION.NAME, payload:data.name})
+            dispatch({type:ACTION.SET_TEMPERATURE, payload:data.main})
+            dispatch({type:ACTION.SET_WEATHER, payload:data.weather[0]})
         })
-        .catch((err)=>{
-            navigation(`/noresult/${cityName}`)
-        })
-    },[])
-    
-
-    useEffect(()=>{
-        fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=ffe7d342f6d3e17670cfd95c181ccac5`)
-        .then(response => response.json())
-        .then((content) => {
-            
-            setForecast(content.list)
-        })
+        
     },[])
 
     
+
 
   return (
     <React.Fragment>
+      <div className='banner' id='banner'>
 
-        <section className='weather-info-banner'>
+          <h1 className='cityName'>{state.name}</h1>
+          
+          <div className='banner-container'>
             
-            <h1 className='title'>{cityName}</h1>
+            <div className='banner-card'>
 
-            <div className='weather-info-container'>
+              <div className='weather-desc'>
+                <img src={`http://openweathermap.org/img/wn/${state.weather.icon}@2x.png`} loading="lazy"></img>
+                <h4>{state.weather.description}</h4>
+              </div>
 
-                <div className='card'>
-                    <h3>Temperature </h3>
-                    <h1>{Math.round( temps.temp - 273.15)+ "°C"}</h1>
-                </div>
+              <div className='temps'> 
+                  <h1>{Math.round(state.temperature.temp - 273.15)}°C</h1>
 
-                <div className='card'>
-                    <h3>Maximum </h3>
-                    <h1>{Math.round(temps.temp_max - 273.15)+ "°C"}</h1>
-                </div>
+                  <h2>Feels Like: {Math.round(state.temperature.feels_like - 273.15)}°C</h2>
 
-                <div className='card'>
-                    <h3>Minimum </h3>
-                    <h1>{Math.round(temps.temp_min - 273.15)+ "°C"}</h1>
-                </div>
-
-                <div className='card'>
-                    <h3>Feels Like</h3>
-                    <h1>{Math.round(temps.feels_like - 273.15)+ "°C"}</h1>
-                </div>
-
-                <div className='card'>
-                    <h3>Pressure (hPa)</h3>
-                    <h1>{temps.pressure}</h1>
-                </div>
-
-                <div className='card'>
-                    <h3>Humidity</h3>
-                    <h1>{temps.humidity}%</h1>
-                </div>
-                
-            </div>
-        </section>
-
-        <section className='forecast'>
-            <h1 className='title'>FORECAST</h1>
-            
-            <div className='forecast-container'>
-                {   
-
-                    forecast.slice(0,5).map((fore)=>{
-
-                        return (
-                            <div className='forecast-card'>
-                                
-                                <div className='forecast-text'>
-                                    <h1 className='f-main'>{fore.weather[0].main}</h1>
-                                    <h3>{fore.weather[0].description}</h3>
-                                    <h1 className='f-temp'>{Math.round(fore.main.temp-275.15) + "°C"}</h1>
-                                    <h4>High: {Math.round(fore.main.temp_max - 275.15)+ "°C"}</h4>
-                                    <h4>Low: {Math.round(fore.main.temp_min - 275.15)+ "°C"}</h4>
-                                </div>
-                                
-                            </div>
-                        )
-                    })
-                }
+                  <h3>High: {Math.round(state.temperature.temp_max - 273.15)}°C</h3>
+                  <h3>Low: {Math.round(state.temperature.temp_min - 273.15)}°C</h3>
+              </div>
 
             </div>
-        </section>
+  
+            <div className='banner-card'>
+                <div className='card-info'>
+                    <div className='info-holder'>
+                      <h1>Pressure</h1>
+                      <p>{state.temperature.pressure} Pa</p>
+                    </div>
 
+                    <div className='info-holder'>
+                      <h1>Humidity</h1>
+                      <p>{state.temperature.humidity}%</p>
+                    </div>
+                </div>
+            </div>
+  
+            <div className='banner-card'>
+                <div className='forecast-info'>
+                    <h1 className='forecast-title'>Forecast</h1>
+                    
+                </div>
+            </div>
+  
+          </div>
+  
+          
+      </div>
     </React.Fragment>
   )
 }

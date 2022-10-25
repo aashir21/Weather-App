@@ -10,8 +10,9 @@
 input {
   width: 300px;
   height: 40px;
-  border: 2px solid #03ac13;
-  color: #36454f;
+  border: 2px solid #E6EFF7;
+  border-radius: 25px;
+  color: #80A9C5;
   font-size: 1rem;
   padding: 1rem;
 }
@@ -21,10 +22,10 @@ button {
   margin: 1rem;
   border-radius: 15px;
   background-color: transparent;
-  border: 2px solid #03ac13;
+  border: 2px solid #E6EFF7;
   cursor: pointer;
   font-family: "Archivo", sans-serif;
   font-weight: 600;
-  color: #36454f;
+  color: #700EBC;
 }
 /*# sourceMappingURL=SearchForm.css.map */

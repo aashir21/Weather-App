@@ -2,112 +2,128 @@
 @import "./resets";
 @import "./variables";
 
-.weather-info-banner {
+.banner {
   width: 75%;
-  min-height: 75vh;
-  margin: auto;
+  margin: 5rem auto;
+  height: 75vh;
+  
 }
 
-.title {
+.cityName{
+  font-size: 3.5rem;
   text-align: center;
-  font-size: 4rem;
-  text-transform: uppercase;
-  color: $secondary-color;
-  font-family: "Archivo", sans-serif;
-  margin: 3rem 0;
+  margin: 1rem auto;
+  font-family: $font-primary;
+  color: #FFFF;
 }
 
-.weather-info-container {
+.banner-container {
   width: 100%;
   height: 100%;
-  @include flex(center, center);
-  flex-wrap: wrap;
-  gap: 10px;
+  @include flex(space-evenly, center);
 }
 
-.card {
-  width: 250px;
-  height: 175px;
-  margin: 1rem 0.5rem;
-  border-left: 2px solid $primary-color;
-  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+.banner-card{
+  height: 100%;
+  width: 325px;
+  border: $accent-color;
+  border-radius: 2rem;
+  background-color: red;
+  margin: 0 1rem;
+  
+  font-family: $font-primary;
+  background-image: linear-gradient(to right top, #700ebc, #8a0fc9, #a410d5, #be11e0, #d812eb);
 
-  h3 {
-    font-family: "Archivo", sans-serif;
-    color: $secondary-color;
+  .weather-desc{
+    @include flex(center,center);
+    flex-direction: column;
     width: 90%;
     margin: 1rem auto;
 
-    text-align: center;
-    font-size: 1.5rem;
-    letter-spacing: 1px;
+    img{
+      scale: 1.3;  
+      
+    }
+  
+    h4{
+      font-size: 2rem;
+      width: auto;
+      text-align: center;
+      text-transform: capitalize;
+      color: #FFF;
+      font-weight: 400;
+    }
   }
 
-  h1 {
-    color: $primary-color;
-    font-size: 4.5rem;
+  .temps{
     width: 90%;
-    margin: auto;
-    text-align: center;
+    
+    margin: 2rem auto;
+    @include flex(flex-start,center);
+    flex-direction: column;
+    color: #FFF;
+
+    h1{
+      font-size: 6rem;
+      background: linear-gradient(to right bottom, #ff7c4b, #ff9447, #ffac48, #ffc34d, #ffda59, #ffda59, #ffda59, #ffda59, #ffc34d, #ffac48, #ff9447, #ff7c4b);
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    h2{
+     
+      margin: 1rem 0;
+      font-size: 1.875rem;
+      font-weight: 400;
+    }
+
+    h3{
+      
+      width: 75%;
+      margin: 0.25rem;
+      font-weight: 400;
+      font-size: 1.875rem;
+    }
   }
 }
-
-.forecast {
-  margin: 5rem auto;
-  min-height: 75vh;
-  width: 75%;
-}
-
-.forecast-container {
+.card-info{
   width: 100%;
   height: 100%;
-  flex-wrap: wrap;
-  gap: 10px;
-  @include flex(center, center);
+  
+  .info-holder{
+    width: 90%;
+    
+    margin: 2rem auto;
+    text-align: center;
+    @include flex(center,center);
+    flex-direction: column;
+
+    h1{
+      font-size: 2.5rem;
+      color: #FFF;
+      margin: 2rem;
+    }
+
+    p{
+      font-size: 4.5rem;
+      background: linear-gradient(to right bottom, #ff7c4b, #ff9447, #ffac48, #ffc34d, #ffda59, #ffda59, #ffda59, #ffda59, #ffc34d, #ffac48, #ff9447, #ff7c4b);
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 700;
+    }
+  }
 }
 
-.forecast-card {
-  width: 275px;
-  height: 275px;
-  margin: 1rem 0.5rem;
-  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
-  border-left: 2px solid $primary-color;
-  font-family: "Archivo", sans-serif;
-}
-
-.day-name {
-  color: $secondary-color;
-  font-family: "Archivo", sans-serif;
-  text-align: center;
-}
-
-.forecast-text {
+.forecast-info{
   width: 90%;
-  margin: auto;
-  height: auto;
-  text-align: center;
+  height: 100%;
+  margin: 4rem auto;
 
-  .f-main {
-    color: $primary-color;
-    margin: 1rem;
-    font-size: 1.75rem;
-  }
-
-  h3 {
-    font-size: 1.25rem;
-    color: $secondary-color;
-    text-transform: capitalize;
-  }
-
-  .f-temp {
-    font-size: 5rem;
-    color: $primary-color;
-    margin: 1rem;
-  }
-
-  h4 {
-    font-size: 1.25rem;
-    font-family: "Archivo", sans-serif;
-    color: $secondary-color;
+  .forecast-title{
+    font-size: 2.5rem;
+    text-align: center;
+    color: #FFFF;
   }
 }
+
+
